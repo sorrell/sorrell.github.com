@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Classic C:  String Copy
 ---
 
