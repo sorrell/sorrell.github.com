@@ -55,6 +55,13 @@ a:visited {
   color: #a0a;
 }
 
+blockquote {
+  	background-color: gray;
+	font: 90%;
+	text-align: center;
+	margin: 4em;
+}
+
 table {
   font-size: inherit;
   font: 100%;
