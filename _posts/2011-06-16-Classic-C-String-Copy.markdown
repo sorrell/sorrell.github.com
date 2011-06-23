@@ -8,7 +8,7 @@ I'm not ashamed to admit that I'm a bit of a [Joel on Software](http://www.joelo
 (A brief aside:  Joel also says that 'C is becoming increasingly rare' - this may have been true in 2005, but [not now](http://redmonk.com/sogrady/2011/04/04/changes-programming-languages/))
 
 Within his C-advice, he writes 
->...if you can't explain why *while (\*s++ = \*t++);* copies a string, or if that isn't the most natural thing in the world to you, well, >you're programming based on superstition...
+>...if you can't explain why *while (\*s++ = \*t++);* copies a string, or if that isn't the most natural thing in the world to you, well, you're programming based on superstition...
 
 So, I did what any burgeoning CS student would do:  I tried to put the code in action.
 

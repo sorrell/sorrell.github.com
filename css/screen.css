@@ -55,19 +55,6 @@ a:visited {
   color: #a0a;
 }
 
-blockquote {
-  	background-color: #F5F4DF;
-	font: 90%;
-	text-align: left;
-	margin: 2em;
-}
-
-code {
-	background-color: #000000;
-	color: #00FF00;
-	font-family: monospace;
-}
-
 table {
   font-size: inherit;
   font: 100%;
@@ -186,10 +173,19 @@ ul.posts {
   #post ol {
     margin-left: 1.25em;
   }
+  
+  #post blockquote {
+  	background-color: #F5F4DF;
+	font: 90%;
+	text-align: left;
+	margin: 2em;
+  }
 
   #post code {
     border: 1px solid #ddd;
-    background-color: #eef;
+    background-color: #000;
+	font-family: monospace;
+	font-color: #00FF00;
     font-size: 85%;
     padding: 0 .2em;
   }
