@@ -190,7 +190,9 @@ ul.posts {
   }
 
     #post pre code {
-      border: none;
+    	font-family: monospace;
+		font-color: #00FF00;
+        border: none;
     }
 
   /* terminal */
