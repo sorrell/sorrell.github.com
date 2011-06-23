@@ -56,10 +56,14 @@ a:visited {
 }
 
 blockquote {
-  	background-color: gray;
+  	background-color: #F5F4DF;
 	font: 90%;
 	text-align: center;
 	margin: 4em;
+}
+
+code {
+	font-family: monospace;
 }
 
 table {
