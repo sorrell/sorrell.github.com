@@ -165,7 +165,7 @@ ul.posts {
 
   #post pre {
     border: 1px solid #ddd;
-    background-color: #000;
+    background-color: #eef;
     padding: 0 .4em;
   }
 
@@ -173,7 +173,7 @@ ul.posts {
   #post ol {
     margin-left: 1.25em;
   }
-  
+
   #post blockquote {
   	background-color: #F5F4DF;
 	font: 90%;
@@ -181,18 +181,21 @@ ul.posts {
 	margin: 2em;
   }
 
+/*code {
+	background-color: #000000;
+	font-color: #00FF00;
+	font-family: monospace;
+}*/
+
   #post code {
     border: 1px solid #ddd;
-	font-family: monospace;
-	font-color: #00FF00;
+    background-color: #eef;
     font-size: 85%;
     padding: 0 .2em;
   }
 
     #post pre code {
-    	font-family: monospace;
-		font-color: #00FF00;
-        border: none;
+      border: none;
     }
 
   /* terminal */
