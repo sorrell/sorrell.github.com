@@ -58,11 +58,13 @@ a:visited {
 blockquote {
   	background-color: #F5F4DF;
 	font: 90%;
-	text-align: center;
-	margin: 4em;
+	text-align: left;
+	margin: 2em;
 }
 
 code {
+	background-color: #000000;
+	color: #00FF00;
 	font-family: monospace;
 }
 
