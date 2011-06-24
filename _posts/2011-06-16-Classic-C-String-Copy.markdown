@@ -25,7 +25,7 @@ My first hack at this looked a little (lot) like the following.
     
 My thinking was that if I just created 'newWord' as an uninitialized char *, and then tried to copy to that memory, I could be overwriting memory that might be in use for something else.  Creating an array seemed logical, because that string 'word' is just a character array, right?  Well, yes and no. I got this error from the compiler:
 
-    stringcopy.c:9: error: lvalue required as increment operand
+    stringcopy.c:5: error: lvalue required as increment operand
     
 Huh?  So much for that simple test, now I've just opened a can of worms.  Maybe I should just abstract it a little more, I thought.
 
