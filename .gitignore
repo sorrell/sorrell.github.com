@@ -1,2 +1,5 @@
 sorrellBlog.tmproj
-_posts/*.html
+.DS_Store
+**/.DS_Store
+_drafts/
+_site/

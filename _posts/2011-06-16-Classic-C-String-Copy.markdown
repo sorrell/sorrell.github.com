@@ -13,36 +13,37 @@ Within his C-advice, he writes
 I understood that the loop would terminate once the null character (\0) was hit.  But that understanding felt like *reading* the math book instead of doing the problems.  So, I did what any burgeoning CS student would do:  I tried to put the code in action.
 
 My first hack at this looked a little (lot) like the following.
-
-    int main()
-    {
-    	char * word = "Sorrell";
-    	char newWord[sizeof(word)];
-    	while (*newWord++ = *word++ ) {};
-    	printf("word:%s and newWord:%s\n", word, newWord);
-    	return 0;
-    }
-    
+{% highlight c %}
+int main()
+{
+	char * word = "Sorrell";
+	char newWord[sizeof(word)];
+	while (*newWord++ = *word++ ) {};
+	printf("word:%s and newWord:%s\n", word, newWord);
+	return 0;
+}
+{% endhighlight %}
 My thinking was that if I just created 'newWord' as an uninitialized char *, and then tried to copy to that memory, I could be overwriting memory that might be in use for something else.  Creating an array seemed logical, because that string 'word' is just a character array, right?  Well, yes and no. I got this error from the compiler:
 
     stringcopy.c:5: error: lvalue required as increment operand
     
 Huh?  So much for that simple test, now I've just opened a can of worms.  Maybe I should just abstract it a little more, I thought.
 
-    void copy_string(char *s, char *t)
-    {
-    	while (*s++ = *t++) {};
-    }
+{% highlight c %}
+void copy_string(char *s, char *t)
+{
+	while (*s++ = *t++) {};
+}
 
-    int main()
-    {
-    	char * word = "Sorrell";
-    	char newWord[sizeof(word)];
-    	copy_string(newWord, word);
-    	printf("word:%s and newWord:%s\n", word, newWord);
-    	return 0;
-    }
-    
+int main()
+{
+    char * word = "Sorrell";
+	char newWord[sizeof(word)];
+	copy_string(newWord, word);
+	printf("word:%s and newWord:%s\n", word, newWord);
+	return 0;
+}
+{% endhighlight %}
 This worked! And, it left me scratching my head... why did this work?  Well, take a look at that 'copy_string' function.  Even though 's' and 't' are taking the address of 'newWord' and 'word' respectively, they are, in fact, new **variables**.  This is an important point.  With our two new char * variables(s and t), both pointing to the same memory locations as 'newWord' and 'word' respectively, we can successfully iterate over (and copy the contents between) memory locations.  But, that still doesn't answer the question as to **why** we can't use that first implementation and iterate over 'newWord'.  Luckily, [K&R](http://en.wikipedia.org/wiki/The_C_Programming_Language) have the answer for us in 5.3 - Pointers and Arrays:
 
 >There is one difference between an array name and a pointer that must be kept in mind. A pointer is a variable, so pa=a and pa++ are legal. But an array name is not a variable; constructions like a=pa and a++ are illegal.
@@ -50,17 +51,17 @@ This worked! And, it left me scratching my head... why did this work?  Well, tak
 *(And, really, that is a chapter worth reading in its entirety.)* 
 
 You can see the iterations [in this file](https://github.com/sorrell/Miscellaneous/blob/master/C/stringcopy.c).  One more thing I learned from this little project is to **reset the pointer** before you try to print out your strings.  Iterating with that pointer has changed where it's pointing (duh), so if you don't reset the pointer, printing will be futile.  Here's what the final implementation looked like:
-
-    int main()
-    {
-    	char * word = "Sorrell";
-    	char * newWord = (char*) malloc (sizeof(word));
-    	while (*newWord++ = *word++) {};
-    	word = &word[-sizeof(word)];		//reset the pointer back to the beginning mem location
-    	newWord = &newWord[-sizeof(newWord)];	// same as above
-    	printf("word:%s and newWord:%s\n", word, newWord);
-    }
-    
+{% highlight c %}
+int main()
+{
+	char * word = "Sorrell";
+	char * newWord = (char*) malloc (sizeof(word));
+	while (*newWord++ = *word++) {};
+	word = &word[-sizeof(word)];		//reset the pointer back to the beginning mem location
+	newWord = &newWord[-sizeof(newWord)];	// same as above
+	printf("word:%s and newWord:%s\n", word, newWord);
+}
+{% endhighlight %}
 Voila.  I now understand much more about C, pointers, and arrays, and it all started with one, seemingly innocuous, line of code.  As always.
  
  
