@@ -9,7 +9,7 @@ You're only as good as your resources, as there is no way you can remember every
 
 [LaTeX symbols - cheatsheet](/files/latex/latexSymbols.pdf)  
 [LaTeX commands - cheatsheet](/files/latex/latexcmds.pdf)  
-[LaTeX fancyhdr - documentation](/files/latex/latexfancyhdr.pdf)  
+[LaTeX fancyhdr - documentation](/files/latex/Latexfancyhdr.pdf)  
 [LaTeX math guide - guide](/files/latex/short-math-guide.pdf)  
 [TeX on StackExchange](http://tex.stackexchange.com/)  
 [Detexify - draw symbols](http://detexify.kirelabs.org/classify.html)  
