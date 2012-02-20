@@ -11,6 +11,7 @@ You're only as good as your resources, as there is no way you can remember every
 [LaTeX commands - cheatsheet](/files/latex/latexcmds.pdf)  
 [LaTeX fancyhdr - documentation](/files/latex/Latexfancyhdr.pdf)  
 [LaTeX math guide - guide](/files/latex/short-math-guide.pdf)  
+[TiKz examples on TeXamples](http://www.texample.net/tikz/examples/tag/graphs/)
 [TeX on StackExchange](http://tex.stackexchange.com/)  
 [Detexify - draw symbols](http://detexify.kirelabs.org/classify.html)  
 
