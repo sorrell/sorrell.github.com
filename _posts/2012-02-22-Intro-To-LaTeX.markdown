@@ -12,7 +12,7 @@ I know what you're thinking: "The last thing the world needs is *another* intro 
 [6. Shorthand](/latexPresentation/shorthand.html)  
 [7. Lists](/latexPresentation/lists.html)  
 [8. Tables](/latexPresentation/tables.html)  
-[9. Fonts, Space, and Line Breaks](/latexPresentation/fonts.html)  
+[9. Fonts, Spaces, Line Breaks, and Landscape mode](/latexPresentation/fonts.html)  
 [10. Title Pages, Sections and TOC](/latexPresentation/title.html)  
 [11. Document Types](/latexPresentation/doctypes.html)  
 [12. Graphics](/latexPresentation/graphics.html)  
