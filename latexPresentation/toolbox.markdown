@@ -19,3 +19,5 @@ You're only as good as your resources, as there is no way you can remember every
 A lot of times, you will forget to close your math equation with a $.  Other times, you accidentally held a shift key for too long, and now the case-sensitive compiler is barking.  Check out the following error.  
 $e^{i\alphA} =\cos (\alpha) + i\sin (\alpha)$  
 That capital 'A' in \alphA is giving us the error, and LaTeX told the error line number.
+
+Next: [15. References](/latexPresentation/bibtex.html)
