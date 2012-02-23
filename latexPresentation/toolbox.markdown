@@ -11,7 +11,7 @@ You're only as good as your resources, as there is no way you can remember every
 [LaTeX commands - cheatsheet](/files/latex/latexcmds.pdf)  
 [LaTeX fancyhdr - documentation](/files/latex/Latexfancyhdr.pdf)  
 [LaTeX math guide - guide](/files/latex/short-math-guide.pdf)  
-[TiKz examples on TeXamples](http://www.texample.net/tikz/examples/tag/graphs/)
+[TiKz examples on TeXamples](http://www.texample.net/tikz/examples/tag/graphs/)  
 [TeX on StackExchange](http://tex.stackexchange.com/)  
 [Detexify - draw symbols](http://detexify.kirelabs.org/classify.html)  
 
@@ -20,4 +20,4 @@ A lot of times, you will forget to close your math equation with a $.  Other tim
 $e^{i\alphA} =\cos (\alpha) + i\sin (\alpha)$  
 That capital 'A' in \alphA is giving us the error, and LaTeX told the error line number.
 
-Next: [15. References](/latexPresentation/bibtex.html)
+Next: [15. BibTeX References](/latexPresentation/bibtex.html)

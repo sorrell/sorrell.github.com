@@ -17,4 +17,5 @@ I know what you're thinking: "The last thing the world needs is *another* intro 
 [11. Document Types](/latexPresentation/doctypes.html)  
 [12. Graphics](/latexPresentation/graphics.html)  
 [13. Drawing](/latexPresentation/drawing.html)  
-[14. Toolbox](/latexPresentation/toolbox.html)
+[14. Toolbox](/latexPresentation/toolbox.html)  
+[15. BibTeX References](/latexPresentation/bibtex.html)
