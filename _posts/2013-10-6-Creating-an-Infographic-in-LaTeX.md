@@ -4,7 +4,7 @@ title: Creating an Infographic in LaTeX
 ---
 #{{ page.title }}
 
-This is a post I've been meaning to get to for a while.  Since the beginning of 2012, in fact.  And now that I've tried to see if my reference link to census.gov works, it turns out that it *temporarily* doesn't because of the government shutdown... here it is though ([pdf here](/files/infographic.pdf "infographic pdf")).
+This is a post I've been meaning to get to for a while.  Since the beginning of 2012, in fact.  And now that I've tried to see if my reference link to census.gov works, it turns out that it *temporarily* doesn't because of the government shutdown... here it is though ( [pdf here](/files/infographic.pdf "infographic pdf") ).
 
 ![infographic](/images/infographic.png "infographic")
 
