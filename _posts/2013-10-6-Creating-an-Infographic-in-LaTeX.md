@@ -1,3 +1,4 @@
+---
 layout: post
 title: Creating an Infographic in LaTeX
 ---
