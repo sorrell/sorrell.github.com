@@ -5,7 +5,7 @@ title: FedEx Needs Jobs
 #{{ page.title }}
 I've been reading/listening to the Steve Jobs biography recently, and I've started to look at every process and experience through the Jobsian lens of "This Sucks, How Can It Be Better?"  So, for those who want the tl;dr:
 
-**FedEx needs the spirit of Jobs, or at least someone who can see how bad the independent user experience there *sucks* and fix it.**
+**FedEx needs the spirit of Jobs, or at least someone who can see how bad their independent user experience *sucks* and fix it.**
 
 The backstory is this:  I'm starting an afterschool programming club at a local high school. So after I created my flyer, I placed it on a USB drive and then I went to FedEx to print it out in color. 
 
