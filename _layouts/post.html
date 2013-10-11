@@ -13,6 +13,13 @@ layout: default
     {% endfor %}
   </ul>
 </div>
+ <div id="related">
+    <h2>Tags</h2>
+    ({% for tag in page.tags %}
+    {{ tag }}{% if forloop.last != true %}, {% endif %}
+    {% endfor %})
+</div>
+<p></p>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

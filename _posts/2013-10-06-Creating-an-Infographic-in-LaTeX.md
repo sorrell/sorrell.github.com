@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Creating an Infographic in LaTeX
+tags: [latex, infographic, diagram]
 ---
 #{{ page.title }}
 
