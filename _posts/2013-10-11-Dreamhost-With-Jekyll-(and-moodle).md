@@ -52,10 +52,11 @@ This seemed to be the easiest part of the install
     RM> cd Pygments-1.6
     RM> python setup.py install --home=$HOME/packages  
     {% endhighlight %}
-    
+
 ### 4. Setup public key SSH login on Dreamhost (authorized_keys)
 This is just from the Dreamhost wiki.  You should probably verify that the correct key is cat'd into your authorized_keys file after you do it...
 
+    {% highlight bash %}
     LM> scp ~/.ssh/id_rsa.pub user@example.com:~/
 
     RM> cat id_rsa.pub >> .ssh/authorized_keys
@@ -63,10 +64,12 @@ This is just from the Dreamhost wiki.  You should probably verify that the corre
     RM> chmod go-w ~
     RM> chmod 700 ~/.ssh
     RM> chmod 600 ~/.ssh/authorized_keys
+    {% endhighlight %}
 
 ### 5. Create your Git repos for Jekyll 
 To do that, we have to set up our repos locally and remotely (thanks to [this blog](http://blog.zerosum.org/2010/11/01/pure-git-deploy-workflow.html))... also don't forget to modify the ``myUser`` parts below!
 
+    {% highlight bash %}
     LM> mkdir repo && cd repo
     LM> git init 
     LM> git add * 
@@ -78,10 +81,12 @@ To do that, we have to set up our repos locally and remotely (thanks to [this bl
     
     LM> git remote add origin ssh://myUser@myDomain.com/home/myUser/gitprojects/repo.git
     LM> git push --all origin
+    {% endhighlight %}
 
 ### 6. Setup Git to Run Jekyll when it is pushed to (auto-publishing FTW!)
 This is the part that I really wanted.  I **love** how GitHub Pages allows you to just push a markdown post to the server and **boom**,  it's published as a blog post.  Again, these tips are thanks to the blog linked to in step 5.  We need to navigate to ``/home/myUser/gitprojects/repo.git/hooks`` and edit the ``post-receive`` file.  Here's what you should put in there (you may also need to ``chmod ug+x`` according to it and mods by me)
 
+   {% highlight bash %}
     #!/bin/sh
     GIT_REPO=$HOME/gitprojects/repo.git
     TMP_GIT_CLONE=$HOME/tmp/myDomain.com
@@ -92,6 +97,7 @@ This is the part that I really wanted.  I **love** how GitHub Pages allows you t
     cd ~ 
     rm -rf $TMP_GIT_CLONE
     exit
+    {% endhighlight %}
 
 
 That's it!  You made it!  And hopefully this saves you some of the headache I went through!
