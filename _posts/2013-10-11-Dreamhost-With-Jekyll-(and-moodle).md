@@ -99,5 +99,7 @@ This is the part that I really wanted.  I **love** how GitHub Pages allows you t
     exit
     {% endhighlight %}
 
+### 7. Moodle on Dreamhost
+Dreamhost offers some old version of Moodle as a one-click install, but it's so old and ugly there's no way you'd ever want to use it.  But I ran into issues trying to install v2.0+ on Dreamhost because the web setup kept dying on me.  After a lot of looking around, the answer is:  **turn off FastCGI**.  After the install is complete you can turn it back on, but for the installation it has to be off for the domain you're installing Moodle on.
 
 That's it!  You made it!  And hopefully this saves you some of the headache I went through!
