@@ -7,7 +7,7 @@ tags: [Dreamhost, Jekyll, rvm, ruby, moodle, git]
 
 I am doing some web hosting on Dreamhost, and I'm using their cheap, cheap, shared hosting plan.  This means that I'm given a  user slot on one of their shared (virtual?) machines.  That means I'm rootless, and in the shell world, that sucks!
 
-Also I wanted to install Jekyll, Pygments, and do that with an up-to-date version of Ruby.  Now, I'm sure the following instructions will be outdated within a year and a half ([like this](http://williamting.com/posts/2012/04/02/set-up-ruby-on-rails-on-dreamhost/) [and this](http://zacstewart.com/2011/06/14/deploying-your-jekyll-blog-on-dreamhost-via-capistrano.html)), but here goes.  From here on out **LM> is Local Machine** and **RM> is Remote Machine** when you see the shell snippets.
+Also I wanted to install Jekyll, Pygments, and do that with an up-to-date version of Ruby.  Now, I'm sure the following instructions will be outdated within a year and a half (my references for this blog: [like this](http://williamting.com/posts/2012/04/02/set-up-ruby-on-rails-on-dreamhost/) [and this](http://zacstewart.com/2011/06/14/deploying-your-jekyll-blog-on-dreamhost-via-capistrano.html)), but here goes.  From here on out **LM> is Local Machine** and **RM> is Remote Machine** when you see the shell snippets.
 
 ### 0. SSH into your Dreamhost shell
 So from your terminal that should look like:
