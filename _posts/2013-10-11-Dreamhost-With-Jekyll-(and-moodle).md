@@ -7,7 +7,7 @@ tags: [Dreamhost, Jekyll, rvm, ruby, moodle, git]
 
 I am doing some web hosting on Dreamhost, and I'm using their cheap, cheap, shared hosting plan.  This means that I'm given a  user slot on one of their shared (virtual?) machines.  That means I'm rootless, and in the shell world, that sucks!
 
-Also I wanted to install Jekyll, Pygments, and do that with an up-to-date version of Ruby.  Now, I'm sure the following instructions will be outdated within a year and a half ([like these](http://williamting.com/posts/2012/04/02/set-up-ruby-on-rails-on-dreamhost/)), but here goes.  From here on out **LM> is Local Machine** and **RM> is Remote Machine** when you see the shell snippets.
+Also I wanted to install Jekyll, Pygments, and do that with an up-to-date version of Ruby.  Now, I'm sure the following instructions will be outdated within a year and a half ([like this](http://williamting.com/posts/2012/04/02/set-up-ruby-on-rails-on-dreamhost/) [and this](http://zacstewart.com/2011/06/14/deploying-your-jekyll-blog-on-dreamhost-via-capistrano.html)), but here goes.  From here on out **LM> is Local Machine** and **RM> is Remote Machine** when you see the shell snippets.
 
 ### 0. SSH into your Dreamhost shell
 So from your terminal that should look like:
@@ -103,3 +103,4 @@ This is the part that I really wanted.  I **love** how GitHub Pages allows you t
 Dreamhost offers some old version of Moodle as a one-click install, but it's so old and ugly there's no way you'd ever want to use it.  But I ran into issues trying to install v2.0+ on Dreamhost because the web setup kept dying on me.  After a lot of looking around, the answer is:  **turn off FastCGI**.  After the install is complete you can turn it back on, but for the installation it has to be off for the domain you're installing Moodle on.
 
 That's it!  You made it!  And hopefully this saves you some of the headache I went through!
+
