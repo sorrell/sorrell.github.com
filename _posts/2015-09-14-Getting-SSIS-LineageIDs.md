@@ -17,6 +17,13 @@ When it came to getting the column name, all signs pointed back to that LineageI
 ## Solution
 I realize that parts of this solution may not work for everyone, say those people with a parent package with a million child packages, and a billion columns.  But it's a proof of concept, and I'm sure you'll find a way to make this work at runtime in your own situation.  A lot of credit here goes to the method outlined [by Dougbert in this post](http://dougbert.com/blog/post/Adding-the-error-column-name-to-an-error-output.aspx).
 
+The nice parts of this solution are:
+
+1. Works at package runtime (not pre-populating)
+1. Is automated through a Script Task and Component
+1. Doesn't involve installing new assemblies or custom components
+1. Is nicely BIML compatible (just add `[![CDATA]]` tags around the entire codeblocks for the SCT and SC)
+
 Here's the basic algorithm we'll follow in the code.
 
 1. Create a `Dictionary<int, string>` variable (let's call it `lineageIds`) to store our LineageIDs
