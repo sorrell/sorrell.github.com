@@ -4,7 +4,10 @@ title: Getting SSIS LineageIDs
 tags: [SSIS, BIML]
 ---
 # {{ page.title }}
+## tl;dr
+You can get error column names in SSIS with two script tasks/components - no custom DLLs, or Components. [Clone the repository and pry into it yourself!.](https://github.com/sorrell/GetErrorColumnNames)
 
+## Backstory
 When I saw the output Error columns in SSIS's Dataflow Task (DFT) for the first time, I thought I had surely misconfigured something, or not followed a certain step.  I mean, I was working with actual data and columns that had human-readable names - but I was getting integers in these Error Code/Column columns...
 
 But like I said, I figured it was operator error, and so I searched my way into hours of disappointment. Microsoft *was* kind enough to enhance the error description, [as described here](https://msdn.microsoft.com/en-us/library/ms345163.aspx).  But that still didn't get a column *name*.
@@ -163,3 +166,5 @@ What I like about this solution is I don't have to run any scripts/packages to p
 Here's the nice output I get in SSMS when I need to see where I'm erring!
 
 ![Overview](/images/201509-SSIS/Output.png)
+
+[Clone the repository and pry into it yourself!](https://github.com/sorrell/GetErrorColumnNames)
