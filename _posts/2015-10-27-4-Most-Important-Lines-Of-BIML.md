@@ -8,7 +8,7 @@ tags: [SSIS, BIML]
 ![A1](/images/2015-10-27-4-Most-Important-Lines-Of-BIML/4lines.png)
 
 ## tl;dr
-You can see exactly where you BIML compile went bust.  [Clone the repository](https://github.com/sorrell/EnhanceDebugging) to see how it works, add the `Biml` folder from the repository to your projects, configure the `Config.cs`, and wrap every BIML file you have in lines 5-8 from the screenshot above.
+You can see exactly where you BIML compile went bust.  [Clone the repository](https://github.com/sorrell/EnhanceDebugging) to see how it works, add the `Biml` folder from the repository to your projects, configure the `Config.cs`, and wrap every BIML file you have in lines 5-8 from the screenshot above. (A more modular solution comes about when we move to single-click-compiles, in a future episode...)
 
 
 ## BIML Debugging
