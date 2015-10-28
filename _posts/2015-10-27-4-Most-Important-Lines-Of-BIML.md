@@ -34,7 +34,7 @@ It should look like the following image in Visual Studio:
 
 ![A2](/images/2015-10-27-4-Most-Important-Lines-Of-BIML/vs.png)
 
-## Assert
+## Get Your Mind Right, Luke
 Since you're an advanced BIMLer, you'll notice that in `1.Environment.biml`, I'm bringing in my `Debug.csbiml` file.  And you're already wondering what a `csbiml` file is - that's for the "Best Practices" posts, but suffice it to say, that if we have a pure mixture of C# and BIML, I want to know about it.  And that's what `class directives` usually yield in my world.  
 
 Now, out of the box, this BIML compiles if you:
@@ -63,7 +63,7 @@ Now you're referencing a `Dictionary` value that doesn't exist.  Here's the erro
 
 Consider for the moment that this is a **GIANT** BIML file, and that you've automated and modularized your code... how does Line 121 correspond with the actual error?  Isn't our error on line 49?  Well, since you've wrapped your code in those 4 Important Lines, you can find out.
 
-## Assert Again
+## Assert
 Since we went kaput, let's take a look inside the `Biml\Utility\Debug\biml.log` file to see what went wrong:
 
 ``````````````
