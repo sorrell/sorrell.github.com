@@ -17,7 +17,7 @@ First, here's where I'm coming from:
 
 So, what are the solutions?  Well, as I said, over the next couple of weeks we'll embark on making the BIML world a better place.  Here's a preview of what's next:
 
-* The Four Most Important BIML Lines - A post about making debugging easier, and "core dumping" your broken BIML.
+* [The Four Most Important BIML Lines](http://sorrell.github.io/2015/10/27/4-Most-Important-Lines-Of-BIML.html) - A post about making debugging easier, and "core dumping" your broken BIML.
 * Single Click Compilation - A post about creating BIML makefiles, so you can hand a project to an intern and simply say "Click Here."
 * Edit in Sublime, Compile in VS - A post(s), and revealing of an open source project, about a Sublime Text theme I'm developing and setup that currently offers syntax highlighting, and relies on Open-Include to jump to files.  Hopefully to include the XSD autocomplete suggestions, and a hack of OmniSharp Server to read cs/biml files.
 * BIML On The First Alarm - The beginning of an open source book about, what I believe to be, BIML best practices. How should folders be structured? How should files be named?  How do the directives work, and when should I use `code` versus `include`?  Plus, tons more.
