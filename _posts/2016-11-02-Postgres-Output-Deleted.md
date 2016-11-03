@@ -28,7 +28,7 @@ The output breaks the UPDATE into two steps, first deleting the old row, and ins
   ROLLBACK;
 ```
 
-When I started working PostgreSQL, I was itching for an equivalent.  In the above queries, you can run the the entire query in a single command and see the results thanks to SQL Server Mgmt Studio.  Unfortunately, PGAdmin is no Mgmt Studio, so we have to hack around a little and **separate into two commands**.  First we execute the preview by opening a transaction, and then our second step is to rollback that transaction after previewing our results.  Here's how that might look:
+When I started working with PostgreSQL, I was itching for an equivalent.  In the above queries, you can run the the entire query in a single command and see the results thanks to SQL Server Mgmt Studio.  Unfortunately, PGAdmin is no Mgmt Studio, so we have to hack around a little and **separate into two commands**.  First we execute the preview by opening a transaction, and then our second step is to rollback that transaction after previewing our results.  Here's how that might look:
 
 ```
   BEGIN;
@@ -54,3 +54,5 @@ Thankfully, the `DELETE` preview is a little more compact:
   -- Ok, take that breather again!  Don't run me until you're ready!
   ROLLBACK;
 ```
+
+The best part about these queries is that when you feel comfortable with them, just change the `ROLLBACK` to a `COMMIT` and it's all done!
