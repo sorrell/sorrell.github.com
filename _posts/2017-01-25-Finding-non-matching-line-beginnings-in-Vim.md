@@ -31,3 +31,5 @@ so that your final command looks like:
 ```
 :v/^1260/ .w! >> newfile.txt
 ```
+
+Final note, the `!` after the `.w` will create a new file.  If the file already exists, just use the `.w`.
