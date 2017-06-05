@@ -16,6 +16,9 @@ So, what do?  The best answer was to create an API wrapper that could only be
 called from the domain we wanted to deploy the code on - by all means, this is a
 weak security solution, and header origin domains can be spoofed, but this solution
 at least made it *somewhat* cumbersome to reuse our API wrapper outside of the site.
+Also, the API we were using wasn't mission critical, so even someone took advantage
+of our setup and made extra calls, we wouldn't be sunk and would likely know this
+had happened.
 
 I had to amalgamate a lot of source material to make sense of creating this solution
 and I thought it might be good to put all of that documentation in one spot - here!
