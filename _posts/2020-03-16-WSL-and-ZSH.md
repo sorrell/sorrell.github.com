@@ -9,9 +9,9 @@ The more I use WSL, the more I love being able to seemlessly switch between Wind
 
 ## Enter ZSH
 
-I have been using zsh for years, and I love how powerful and customizable it is. If you haven't used it, you should really take a look at it with frameworks such as [https://ohmyz.sh/](Oh My ZSH) or [https://github.com/sorin-ionescu/prezto](Prezto) (I use Prezto). These frameworks can build a **ton** of efficiencies into your workflow on their own.
+I have been using zsh for years, and I love how powerful and customizable it is. If you haven't used it, you should really take a look at it with frameworks such as [Oh My ZSH](https://ohmyz.sh/) or [Prezto](https://github.com/sorin-ionescu/prezto) (I use Prezto). These frameworks can build a **ton** of efficiencies into your workflow on their own.
 
-zsh on its own, however, has the capability itself to improve the command line workflow of accessing Windows files. To make navigation in zsh faster, we will utilize a feature called [http://zsh.sourceforge.net/Doc/Release/Expansion.html#Static-named-directories](Named Directories). zsh comes with a number of "builtins" and you can read about them with `man zshbuiltins`; The builtin we will use is called `hash`, which is an interface into two hash tables, the command hash table and the named directory hash table. 
+zsh on its own, however, has the capability itself to improve the command line workflow of accessing Windows files. To make navigation in zsh faster, we will utilize a feature called [Named Directories](http://zsh.sourceforge.net/Doc/Release/Expansion.html#Static-named-directories). zsh comes with a number of "builtins" and you can read about them with `man zshbuiltins`; The builtin we will use is called `hash`, which is an interface into two hash tables, the command hash table and the named directory hash table. 
 
 The named directory hash table contains entries that get expanded by using the `~` (tilde) coupled with a string. The `~` on its own expands to your `$HOME` directory in Linux, which is usually located in `/home/myLinuxUsername`. So let's see how it works:
 
