@@ -5,7 +5,7 @@ tags: [manim, python]
 ---
 # {{ page.title }}
 
-I've been working on creating a Linux tutorial lately and I wanted to make the guide not so... drab. The 3blue1brown videos really have grown on me, and I wanted to do something with manim.
+I've been working on creating a Linux tutorial lately and I wanted to make the guide not so... drab. The 3blue1brown videos really have grown on me, and I wanted to do something with [manim](https://github.com/3b1b/manim).
 
 Unfortunately, it wasn't so easy to get started, as documentation is still in the early staged with manim. With some poking around, however, I was able to create this sequence, which I was satisfied with.
 
