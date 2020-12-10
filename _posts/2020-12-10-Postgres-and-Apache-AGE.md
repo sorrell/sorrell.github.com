@@ -153,10 +153,11 @@ I was curious how the two queries would perform against each other in terms of q
 
 I simply ran each query from the `psql` command line with `\timing` on and averaged 10 runs. Here's how they performed:
 
-> Raw AGE query: 3.681 ms
-> Relation AGE query: 1.489 ms  
-> CTE query: 0.801 ms
-
+```
+ Raw AGE query: 3.681 ms
+ Relation AGE query: 1.489 ms  
+ CTE query: 0.801 ms
+```
 
 ##  Conclusions
 
