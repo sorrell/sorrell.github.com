@@ -84,6 +84,8 @@ Now that we've kicked the wheels a little bit, I wanted to run some baseline com
  Suyama          | Sales Representative     | Buchanan     | Sales Manager
 ```
 
+
+
 In the relational world, this consists of a recursive CTE (common table expression). Here's what that query looks like:
 
 ```sql
@@ -110,7 +112,30 @@ WHERE r.reportto IS NOT NULL
 ORDER BY r.lastname;
 ```
 
-And in the AGE-powered relational/graph world, it looks like this:
+And in the AGE-powered relational/graph world, the **Raw AGE query** looks like this:
+
+```sql
+SELECT * FROM cypher('northwind_graph', $$
+  MATCH (n:employee),(m:employee)
+  WHERE n.reportto = m.employeeid
+  RETURN n.lastname, n.title, m.lastname, m.title
+  ORDER BY n.lastname
+$$) AS (subord_lastname agtype, subord_title agtype, mgr_lastname agtype, mgr_title agtype);
+```
+
+We could make this a bit more expressive and performant by creating a relation here though, and that's already done in the `age-compose` setup step that looks like this:
+
+```sql
+DO $$ BEGIN RAISE NOTICE 'CREATING Employee-Mgr Relationship'; END $$;
+SELECT * FROM cypher('northwind_graph', $$
+  MATCH (n:employee),(m:employee)
+  WHERE m.employeeid=n.reportto
+  CREATE (n)-[r:REPORTS_TO]->(m) 
+  RETURN toString(count(r)) + ' relations created.'
+$$) AS (a agtype);
+```
+
+Utilizing that new relation, we can run the **Relation AGE query** below:
 
 ```sql
 SELECT * FROM cypher('northwind_graph', $$
@@ -128,7 +153,8 @@ I was curious how the two queries would perform against each other in terms of q
 
 I simply ran each query from the `psql` command line with `\timing` on and averaged 10 runs. Here's how they performed:
 
-> AGE query: 1.489 ms  
+> Raw AGE query: 3.681 ms
+> Relation AGE query: 1.489 ms  
 > CTE query: 0.801 ms
 
 
