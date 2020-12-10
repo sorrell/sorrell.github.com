@@ -18,11 +18,15 @@ The first thing in the journey I needed to do was to get AGE setup and running l
 
 Since AGE is still in alpha, I decided I want to keep the experience containerized, so I created a couple of Docker images:  one [Debian based](https://hub.docker.com/repository/docker/sorrell/agensgraph-extension), and one [Alpine based](https://hub.docker.com/repository/docker/sorrell/agensgraph-extension-alpine). These containers are based on the Postgres 11 official images, but also will clone, build, and install AGE. AGE is locked in PG11 right now, but they are working on making it compatible with newer version of PG. 
 
-One of the great things that Bitnine offers in their [agensbrowser Docker image](https://hub.docker.com/r/bitnine/agensbrowser) is some sample data in the form a Northwind database. This data is traditional RDBMS stuff - tables and relations. No special graph database nodes or relationships.
+One of the great things that Bitnine offers in their [AgensGraph tutorial](https://bitnine.net/tutorial/tutorial_eng.html) is some sample data in the form a Northwind database. This data is traditional RDBMS stuff - tables and relations. No special graph database nodes or relationships.
 
-But since Northwind isn't built into the Docker images I created, I decided I would put that data into a Docker compose project called [age-compose](https://github.com/sorrell/age-compose). Upon adding this data though, I started looking for a way to turn the traditional RDBMS tables of employees and territories into graph nodes that I could use with AGE.
+But since Northwind isn't built into the Docker images I created, I decided I would put that data into a Docker compose project called [age-compose](https://github.com/sorrell/age-compose) (Debian based, uses plpython3u). There is also an Alpine Linux-based version here (uses plpython2u):  [age-compose-alpine](https://github.com/sorrell/age-compose-alpine).
 
-In AgensGraph, they created some helpers with a `LOAD FROM (table)` syntax. Since that functionality is still in the works with AGE, I decided I would create a plpython function to help with this task (because loading the graph row-by-row would be insanity). I also added this function to the `age-compose` project, [and you can see it here](https://github.com/sorrell/age-compose/blob/master/docker-entrypoint/initdb.d/20-initgraph.sql#L10). (**Note:** as of this writing, this functionality only works in the Debian-based Docker image.)
+Upon adding this data though, I started looking for a way to turn the traditional RDBMS tables of employees and territories into graph nodes that I could use with AGE.
+
+
+
+In AgensGraph, they created some helpers with a `LOAD FROM (table)` syntax. Since that functionality is still in the works with AGE, I decided I would create a plpython function to help with this task (because loading the graph row-by-row would be insanity). I also added this function to the `age-compose` project, [and you can see it here](https://github.com/sorrell/age-compose/blob/master/docker-entrypoint/initdb.d/20-initgraph.sql#L10). 
 
 I certainly don't claim that to be the most beautiful or performant implementation, but it really scratches the itch when you want to turn a table into a bunch of nodes with the same label. It made that process as easy as calling `SELECT load_graph_from_table('employee', 'employees');`.
 
@@ -154,9 +158,9 @@ I was curious how the two queries would perform against each other in terms of q
 I simply ran each query from the `psql` command line with `\timing` on and averaged 10 runs. Here's how they performed:
 
 ```
- Raw AGE query: 3.681 ms
- Relation AGE query: 1.489 ms  
- CTE query: 0.801 ms
+Raw AGE query: 3.681 ms
+Relation AGE query: 1.489 ms  
+CTE query: 0.801 ms
 ```
 
 ##  Conclusions
