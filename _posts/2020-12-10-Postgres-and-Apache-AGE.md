@@ -16,9 +16,9 @@ That said, I thought it would be fun to take AGE for a test run to show some of 
 
 The first thing in the journey I needed to do was to get AGE setup and running locally. I highly recommend just cloning the `age-compose` repository that I mention below, as it provides some sample relational data and some sample graph data and helper functions. 
 
-Since AGE is still in alpha, I decided I want to keep the experience containerized, so I created a couple of Docker images:  one [Debian based](https://hub.docker.com/repository/docker/sorrell/agensgraph-extension), and one [Alpine based](https://hub.docker.com/repository/docker/sorrell/agensgraph-extension-alpine). These containers are based on the Postgres 11 official images, but also will clone, build, and install AGE. AGE is locked in PG11 right now, but they are working on making it compatible with newer version of PG. 
+Since AGE is still in alpha, I decided I want to keep the experience containerized, so I created a couple of Docker images:  one [Debian based](https://hub.docker.com/repository/docker/sorrell/agensgraph-extension), and one [Alpine based](https://hub.docker.com/repository/docker/sorrell/agensgraph-extension-alpine). These containers are based on the Postgres 11 official images, but also will clone, build, and install AGE. AGE is locked in PG11 right now, but they are working on making it compatible with newer versions of PG. 
 
-One of the great things that Bitnine offers in their [AgensGraph tutorial](https://bitnine.net/tutorial/tutorial_eng.html) is some sample data in the form a Northwind database. This data is traditional RDBMS stuff - tables and relations. No special graph database nodes or relationships.
+One of the great things that Bitnine offers in their [AgensGraph tutorial](https://bitnine.net/tutorial/tutorial_eng.html) is some sample data in the form of a Northwind database. This data is traditional RDBMS stuff - tables and relations. No special graph database nodes or relationships.
 
 But since Northwind isn't built into the Docker images I created, I decided I would put that data into a Docker compose project called [age-compose](https://github.com/sorrell/age-compose) (Debian based, uses plpython3u). There is also an Alpine Linux-based version here (uses plpython2u):  [age-compose-alpine](https://github.com/sorrell/age-compose-alpine).
 
@@ -32,7 +32,19 @@ I certainly don't claim that to be the most beautiful or performant implementati
 
 ## Querying The Graph
 
-Now that I had a running container with some sample data loaded, it was easy to query the graph. To query the graph using AGE, we need to stuff the Cypher query into a function call that looks like this:
+Now that I had a running container with some sample data loaded, it was easy to query the graph. But before any queries will work, you will need to set your search path so that your client can find the AGE functions.
+
+```sql
+SET search_path = ag_catalog, "$user", public;
+```
+
+Because I sometimes forget that path, I created the helper function in the `age-compose` project to set it like this:
+
+```sql
+SELECT graph_path();
+```
+
+Now that we have a path to the AGE functions, we can start querying the graph. To query the graph using AGE, we need to stuff the Cypher query into a function call that looks like this:
 
 ```sql
 SELECT * from cypher('my_graph_name', $$
@@ -50,7 +62,30 @@ $$) as (employee agtype);
 
 -----RESULT (extended display on)
 -[ RECORD 1 ]---------------
-employee | {"id": 1407374883553285, "label": "employee", "properties": {"city": "London", "notes": "Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree in 1976.  Upon joining the company as a sales representative in 1992, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London.  He was promoted to sales manager in March 1993.  Mr. Buchanan has completed the courses Successful Telemarketing and International Sales Management.  He is fluent in French.", "photo": "\\x", "title": "Sales Manager", "region": null, "address": "14 Garrett Hill", "country": "UK", "hiredate": "1993-10-17", "lastname": "Buchanan", "reportto": 2, "birthdate": "1955-03-04", "extension": "3453", "firstname": "Steven", "homephone": "(71) 555-4848", "photopath": "http://accweb/emmployees/buchanan.bmp", "employeeid": 5, "postalcode": "SW1 8JR", "titleofcourtesy": "Mr."}}::vertex
+employee | {
+  "id": 1407374883553285, 
+  "label": "employee", 
+  "properties": {
+    "city": "London", 
+    "notes": "Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree in 1976.  Upon joining the company as a sales representative in 1992, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London.  He was promoted to sales manager in March 1993.  Mr. Buchanan has completed the courses Successful Telemarketing and International Sales Management.  He is fluent in French.", 
+    "photo": "\\x", 
+    "title": "Sales Manager", 
+    "region": null, 
+    "address": 
+    "14 Garrett Hill", 
+    "country": "UK", 
+    "hiredate": "1993-10-17", 
+    "lastname": "Buchanan", 
+    "reportto": 2, 
+    "birthdate": "1955-03-04", 
+    "extension": "3453", 
+    "firstname": "Steven", 
+    "homephone": "(71) 555-4848", 
+    "photopath": "http://accweb/emmployees/buchanan.bmp", 
+    "employeeid": 5, 
+    "postalcode": "SW1 8JR", 
+    "titleofcourtesy": "Mr."
+  }}::vertex
 ```
 
 Notice that the return type is `agtype`, which is saying that we are going to return a vertex (node) or an edge (relation). This could be changed, for example, to `text` if you were to just `RETURN a.firstname`. Notice that the result of this specific query is of type `vertex`. 
@@ -65,14 +100,20 @@ $$) as (rel agtype);
 
 -----RESULT (extended display on)
 -[ RECORD 1 ]---------------
-rel | {"id": 3940649673949188, "label": "REPORTS_TO", "end_id": 1407374883553282, "start_id": 1407374883553285, "properties": {}}::edge
+rel | {
+  "id": 3940649673949188, 
+  "label": "REPORTS_TO", 
+  "end_id": 1407374883553282, 
+  "start_id": 1407374883553285, 
+  "properties": {
+  }}::edge
 ```
 
 Notice a couple things here. First, that `start_id` matches Buchanan's `id`, which makes sense. The `end_id` is the `id` of the employee that Buchanan reports to, which we could also see by executing `RETURN b` instead of `RETURN r`.
 
 ## Comparing Apples and Oranges 
 
-Now that we've kicked the wheels a little bit, I wanted to run some baseline comparisons. One of the canonical examples when it comes to comparing graph and relational databases is the "employee hierarchy" query. This query shows the user who manages different employees. Here's what the query should return, a list of subordinates and their manager (name and title for both):
+Now that we've kicked the wheels a little bit, I wanted to run some baseline comparisons. One of the canonical examples when it comes to comparing graph and relational databases is the "employee hierarchy" query. This query shows the user who manages different employees. The query should return a list of subordinates and their manager (name and title for both):
 
 ```sql
 -----RESULT
