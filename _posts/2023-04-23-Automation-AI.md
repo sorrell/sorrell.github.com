@@ -74,7 +74,7 @@ This part was a little trickier to get _just right_. ChatGPT didn't have the "ou
 
 That flow may have existed in 2021 when the training data went through ChatGPT, but that flow no longer exists. You now need the "Create a repository dispatch event." 
 
-One somewhat scary thing about using this native flow is that signing into Github here requires you to give full access to an app owned by `aaptapps.` Some searching showed this to really be owned by Microsoft, by my God is that the worst name ever.
+One somewhat scary thing about using this native flow is that signing into Github here requires you to give full access to an app owned by `aaptapps.` Some searching showed this to really be owned by Microsoft, but my God is that the worst name ever.
 
 <img src="https://sorrell.github.io/images/202304/scary_app.png" width="75%">
 
