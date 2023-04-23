@@ -21,7 +21,7 @@ At the very high level, I wanted to accomplish the following:
  
 Below is a sequence diagram of how it plays out:
 
-![image](/images/202304/sequence_ai.png)  
+<img src="https://sorrell.github.io/images/202304/sequence_ai.png" width="75%">  
 
 ## Power Automate
 
@@ -31,7 +31,7 @@ This part was a little tricky to get right, but I used ChatGPT to help guide me 
 
 Below is the high-level flow inside of Power Automate.
 
-![image](/images/202304/power_automate_1.png)
+<img src="https://sorrell.github.io/images/202304/power_automate_1.png" width="75%">
 
 ### PA Flow Step #1 - When a new email arrives V3
 
@@ -39,7 +39,7 @@ Below is the high-level flow inside of Power Automate.
 
 This part is straightforward - filtering on emails with a certain verbiage in the subject line.
 
-![image](/images/202304/power_automate_2.png)
+<img src="https://sorrell.github.io/images/202304/power_automate_2.png" width="75%">
 
 ### PA Flow Step #2 - HTTP Request
 
@@ -62,7 +62,7 @@ Why am I telling it about XML tags? Well, when I was using the `text-davinci-003
 
 Below is what the full flow looks like:
 
-![image](/images/202304/power_automate_3.png)
+<img src="https://sorrell.github.io/images/202304/power_automate_3.png" width="75%">
 
 ### PA Flow Step #3 - GitHub
 
@@ -76,7 +76,7 @@ That flow may have existed in 2021 when the training data went through ChatGPT, 
 
 One somewhat scary thing about using this native flow is that signing into Github here requires you to give full access to an app owned by `aaptapps.` Some searching showed this to really be owned by Microsoft, by my God is that the worst name ever.
 
-![image](/images/202304/scary_app.png)
+<img src="https://sorrell.github.io/images/202304/scary_app.png" width="75%">
 
 After that, you need to configure a few more things. For example, the Event Payload should reference the name of the previous flow step (HTTPReq in my case) and then parse the response.
 
@@ -84,7 +84,7 @@ After that, you need to configure a few more things. For example, the Event Payl
 
 Below is what the flow looks like in my case.
 
-![image](/images/202304/power_automate_4.png)
+<img src="https://sorrell.github.io/images/202304/power_automate_4.png" width="75%">
 
 ## Github Actions
 
@@ -92,7 +92,7 @@ Next up was the actual testing of the release with the data I've collected so fa
 
 The workflow here is that I want to run high level tests and then a smoketest.
 
-![image](/images/202304/Github-action.png)
+<img src="https://sorrell.github.io/images/202304/Github-action.png" width="75%">
 
 I hadn't used Github Actions to receive or parse a payload before, so it took me more time than I wanted to get this part right. In the end, the real culprit was not have a `json()` function call around the last step in the Power Automate flow - once I did that, the Github side made a lot more sense!
 
@@ -117,7 +117,7 @@ This gave me a script that used the `request` library, which felt too bulky. So 
 
 That gave me the base of what I needed. So then pasting that into VSCode, I would simply start to type the next comment, and it would complete code for me. For example, I would start to type "Download" and it would realize I wanted to download the `sha512` and signature. In the image below, ChatGPT gave me lines 13, 14, 19, 20 and Copilot figured out 15, 16, 22-28.
 
-![image](/images/202304/compare_ai.png)
+<img src="https://sorrell.github.io/images/202304/compare_ai.png" width="75%">
 
 ChatGPT helped create the Github Actions file as well and when I asked how to iterate on invoking the actions, it nicely suggested to use the `workflow_dispatch` so that I could invoke via the website. The job in the workflow does a few more things:
 
@@ -128,7 +128,7 @@ ChatGPT helped create the Github Actions file as well and when I asked how to it
 
 Here is [some output](https://github.com/sorrell/apache_age_release_verification/actions/runs/4774755320/jobs/8488637226) from a successful action triggered on yesterday's email.
 
-![image](/images/202304/gha-job1.png)
+<img src="https://sorrell.github.io/images/202304/gha-job1.png" width="75%">
 
 
 ### Job 2 - Smoketest
